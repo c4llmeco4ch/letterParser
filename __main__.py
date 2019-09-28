@@ -9,17 +9,17 @@ def parseText(filePath):
     with open(filePath) as file:
         lines = file.readlines()
         for line in lines:
-            words = line.split()
-            for word in words:
-                for char in word:
+            for word in line.split():
+                for char in word.lower():
                     if not charMap.get(char[0], -1) == -1:
-                        print("Found a {c}".format(c = char))
+                        #print("Found a {c}".format(c = char))
                         charMap[char] += 1
     return charMap
 
 with open("./textList.txt") as texts:
     for line in texts.readlines():
-        textMap = parseText(line)
-        print("{title}\n{dashes}".format(title = line, dashes = "-" * len(line)))
+        textMap = parseText(line.strip())
+        print("{title}\n{dashes}".format(title = line.strip(), dashes = "-" * len(line)))
         for pair in textMap.items():
             print("{key} | {val}".format(key = pair[0], val = pair[1]))
+        print()
