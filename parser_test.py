@@ -1,5 +1,5 @@
 import unittest
-from . import parseText
+from . import *
 
 class TestBasicFiles(unittest.TestCase):
 
